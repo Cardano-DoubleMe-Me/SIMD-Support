@@ -20,6 +20,12 @@ public struct SRT: Hashable {
         let translationMatrix = simd_float4x4(translate: translation)
         return translationMatrix * rotationMatrix * scaleMatrix
     }
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(scale.hashValue)
+        hasher.combine(rotation.vector.hashValue)
+        hasher.combine(translation.hashValue)
+    }
 }
 
 // MARK: -
